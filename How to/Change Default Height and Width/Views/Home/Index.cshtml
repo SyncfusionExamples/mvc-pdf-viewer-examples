@@ -9,7 +9,7 @@
 <div>
     <div style="height: 500px;width:100%;">
 
-        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/")).DocumentPath("PDF_Succinctly.pdf").Height("1000px").Width("100%").Render()
+        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/")).DocumentPath("PDF_Succinctly.pdf").Height("1000px").Width("80%").Render()
 
     </div>
 </div>
@@ -19,7 +19,5 @@
     #pdfviewer {
         display: block;
     }
-
-    3
 </style>
 
