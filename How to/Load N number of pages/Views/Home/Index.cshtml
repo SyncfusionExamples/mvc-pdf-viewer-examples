@@ -1,0 +1,28 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.PdfViewer
+@using System.IO
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <div style="height:100%; width: 100%;">
+
+        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/")).DocumentPath("PDF_Succinctly.pdf").Render()
+
+    </div>
+</div>
+
+<script>
+
+    var initialRenderPages = 10;
+
+</script>
+
+<style>
+    #pdfviewer {
+        display: block;
+    }
+</style>
+
