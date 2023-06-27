@@ -1,0 +1,19 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.PdfViewer
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.4.44/fluent.css" />
+    <script src="https://cdn.syncfusion.com/ej2/20.4.44/dist/ej2.min.js"></script>
+</head>
+<body>
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+    @Html.EJS().ScriptManager()
+</body>
+</html>
