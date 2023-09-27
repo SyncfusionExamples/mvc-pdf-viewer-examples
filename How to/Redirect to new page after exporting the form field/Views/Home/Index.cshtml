@@ -6,7 +6,7 @@
 }
 
 <div style="height:500px;width:100%;">
-    <!--Render PDF Viewer component-->
+   <!-- To configure the server-backed PDF Viewer, include the "ServiceUrl(VirtualPathUtility.ToAbsolute("~/PdfViewer"))"-->
     @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/form-designer.pdf").ExportStart("exportStart").Render()
 </div>
 
