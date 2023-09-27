@@ -1,8 +1,4 @@
-﻿@using Syncfusion.EJ2
-@using Syncfusion.EJ2.PdfViewer
-@using System.IO
-
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
@@ -13,13 +9,12 @@
 <button type="button" onclick="addtags()">Add tags</button>
 <div style="width:100%;height:600px">
     <!--Code to render PDF Viewer-->
-    @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/PdfViewer/")).DocumentPath("PDF Succinctly.pdf").Render()
+    @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").Render()
 </div>
 <style>
     #pdfviewer {
         display: block;
     }
-    
 </style>
 
 <script>

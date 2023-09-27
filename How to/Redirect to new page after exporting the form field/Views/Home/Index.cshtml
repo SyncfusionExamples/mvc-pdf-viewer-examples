@@ -7,12 +7,12 @@
 
 <div style="height:500px;width:100%;">
     <!--Render PDF Viewer component-->
-    @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/PdfViewer")).DocumentPath("FormDesigner.pdf").ExportStart("exportStart").Render()
+    @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/form-designer.pdf").ExportStart("exportStart").Render()
 </div>
 
-<script>
+<script type="text/javascript">
     function exportStart() {
-    //For redirect to success page in a new window 
+    //For redirect to success page in a new window
     // Note : URL must be (https://localhost:44378/)
     window.open("PdfViewer/About");
 

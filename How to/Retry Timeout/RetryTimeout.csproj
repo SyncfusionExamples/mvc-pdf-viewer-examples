@@ -153,7 +153,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="App_Data\PDF_Succinctly.pdf" />
+    <Content Include="App_Data\https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
