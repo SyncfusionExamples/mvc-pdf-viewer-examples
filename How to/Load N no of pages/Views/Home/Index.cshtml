@@ -8,6 +8,7 @@
 
 <div>
     <div style="height:100%; width: 100%;">
+        <button type="button" onclick="signatureWithDate()">Add Signature with the time</button>
         @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/")).DocumentPath("PDF_Succinctly.pdf").InitialRenderPages(initialRenderPages).Render()
     </div>
 </div>

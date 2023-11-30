@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using Syncfusion.EJ2
+<div>
+    <div style="height:500px;width:100%;">
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/form-designer.pdf").ExportStart("exportStart").Render()
+    </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+    function exportStart() {
+    //For redirect to success page in a new window
+    // Note : URL must be (https://localhost:44378/)
+    window.open("PdfViewer/About");
+
+    // For redirect to success page in a same window.
+    @*var url = "@Url.Action("About","Home")";
+    window.location.pathname = url;*@
+    }
+
+</script>
