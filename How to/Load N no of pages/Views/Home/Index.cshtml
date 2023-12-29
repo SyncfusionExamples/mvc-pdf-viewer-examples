@@ -8,7 +8,8 @@
 
 <div>
     <div style="height:100%; width: 100%;">
-        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/")).DocumentPath("PDF_Succinctly.pdf").InitialRenderPages(initialRenderPages).Render()
+        <!-- To configure the server-backed PDF Viewer, include the "ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/"))"-->
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").InitialRenderPages(initialRenderPages).Render()
     </div>
 </div>
 
