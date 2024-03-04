@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <div style="height:500px;width:100%;">
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").DocumentLoad("documentLoad").Render()
+    </div>
+</div>
+
+
+<script>
+    var isInitialLoading = true;
+    function documentLoad() {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (isInitialLoading) {
+            viewer.isPageOrganizerOpen = true;
+            isInitialLoading = false;
+        } else {
+            viewer.isPageOrganizerOpen = false;
+        }
+    }
+</script>
