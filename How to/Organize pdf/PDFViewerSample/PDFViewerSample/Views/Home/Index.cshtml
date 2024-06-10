@@ -4,10 +4,9 @@
 
 <div>
     <div style="height:500px;width:100%;">
-        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").DocumentLoad("documentLoad").Render()
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").DocumentLoad("documentLoad").EnablePageOrganizer(false).IsPageOrganizerOpen(false).PageOrganizerSettings(new Syncfusion.EJ2.PdfViewer.PageOrganizerSettings { canDelete: true, canInsert: true, canRotate: true, canCopy: true, canRearrange: true }).Render()
     </div>
 </div>
-
 
 <script>
     var isInitialLoading = true;
@@ -19,5 +18,15 @@
         } else {
             viewer.isPageOrganizerOpen = false;
         }
+    }
+    function openPageOrganizer() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        // Close Page Organizer panel.
+        pdfViewer.pageOrganizer.openPageOrganizer();
+    },
+    function closePageOrganizer() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        // Close Page Organizer panel.
+        pdfViewer.pageOrganizer.closePageOrganizer(););
     }
  </script>

@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    double maxZoom = 200;
+    double minZoom = 20;
+}
+
+<div>
+    <div style="height:100%; width: 100%;">
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/hive-succinctly.pdf").MaxZoom(maxZoom).MinZoom(minZoom).Render()
+    </div>
+</div>
