@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <div style="height:500px;width:1350px;">
+        <br /><br />
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/24.1.41/dist/ej2-pdfviewer-lib").ToolbarClick("toolbarClick").Render()
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var toolItem1 = {
+            prefixIcon: 'e-icons e-save',
+            id: 'download',
+            text: 'Save',
+            tooltipText: 'Save Button',
+            align: 'left'
+        };
+        function onCreate() {
+            this.addIcon('prepend', 'e-icons e-search');
+        }
+        pdfViewer.toolbarSettings = {
+            showTooltip: true,
+            toolbarItems: ['OpenOption', toolItem1, 'PageNavigationTool', 'MagnificationTool', 'PanTool', 'SelectionTool', 'SearchOption', 'PrintOption', 'UndoRedoTool', 'AnnotationEditTool', 'FormDesignerEditTool', 'CommentTool', 'SubmitForm']
+        };
+
+    };
+
+    // Define the toolbarClick event handler
+    function toolbarClick(args) {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (args.item && args.item.id === 'download') {
+            pdfViewer.download();
+        }
+    }
+</script>
