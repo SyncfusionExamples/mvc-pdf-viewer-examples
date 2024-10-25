@@ -45,24 +45,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Compression.Base, Version=24.1450.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.24.1.41\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
+    <Reference Include="Syncfusion.Compression.Base, Version=27.1450.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.EJ2, Version=24.1.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.EJ2.MVC5.24.1.41\lib\net45\Syncfusion.EJ2.dll</HintPath>
+    <Reference Include="Syncfusion.EJ2, Version=27.1.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.MVC5.27.1.56\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.EJ2.PdfViewer, Version=24.1.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.24.1.41\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+    <Reference Include="Syncfusion.EJ2.PdfViewer, Version=27.1.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Licensing, Version=24.1460.41.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Licensing.24.1.41\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    <Reference Include="Syncfusion.Licensing, Version=27.1450.56.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.27.1.56\lib\net462\Syncfusion.Licensing.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Pdf.Base, Version=24.1450.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.24.1.41\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+    <Reference Include="Syncfusion.Pdf.Base, Version=27.1450.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PdfToImageConverter.Base, Version=27.1450.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -127,11 +135,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -158,10 +161,23 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\ej2\bds-dark-lite.css" />
+    <Content Include="Content\ej2\bds-dark.css" />
+    <Content Include="Content\ej2\bds-lite.css" />
+    <Content Include="Content\ej2\bds.css" />
+    <Content Include="Content\ej2\bootstrap-dark-lite.css" />
     <Content Include="Content\ej2\bootstrap-dark.css" />
+    <Content Include="Content\ej2\bootstrap-lite.css" />
     <Content Include="Content\ej2\bootstrap.css" />
+    <Content Include="Content\ej2\bootstrap4-lite.css" />
     <Content Include="Content\ej2\bootstrap4.css" />
+    <Content Include="Content\ej2\bootstrap5-dark-lite.css" />
     <Content Include="Content\ej2\bootstrap5-dark.css" />
+    <Content Include="Content\ej2\bootstrap5-lite.css" />
+    <Content Include="Content\ej2\bootstrap5.3-dark-lite.css" />
+    <Content Include="Content\ej2\bootstrap5.3-dark.css" />
+    <Content Include="Content\ej2\bootstrap5.3-lite.css" />
+    <Content Include="Content\ej2\bootstrap5.3.css" />
     <Content Include="Content\ej2\bootstrap5.css" />
     <Content Include="Content\ej2\compatibility\bootstrap.css" />
     <Content Include="Content\ej2\compatibility\bootstrap4.css" />
@@ -172,16 +188,33 @@
     <Content Include="Content\ej2\customized\material.css" />
     <Content Include="Content\ej2\customized\tailwind-dark.css" />
     <Content Include="Content\ej2\customized\tailwind.css" />
+    <Content Include="Content\ej2\fabric-dark-lite.css" />
     <Content Include="Content\ej2\fabric-dark.css" />
+    <Content Include="Content\ej2\fabric-lite.css" />
     <Content Include="Content\ej2\fabric.css" />
+    <Content Include="Content\ej2\fluent-dark-lite.css" />
     <Content Include="Content\ej2\fluent-dark.css" />
+    <Content Include="Content\ej2\fluent-lite.css" />
     <Content Include="Content\ej2\fluent.css" />
+    <Content Include="Content\ej2\fluent2-dark-lite.css" />
+    <Content Include="Content\ej2\fluent2-dark.css" />
+    <Content Include="Content\ej2\fluent2-highcontrast-lite.css" />
+    <Content Include="Content\ej2\fluent2-highcontrast.css" />
+    <Content Include="Content\ej2\fluent2-lite.css" />
+    <Content Include="Content\ej2\fluent2.css" />
+    <Content Include="Content\ej2\highcontrast-lite.css" />
     <Content Include="Content\ej2\highcontrast.css" />
+    <Content Include="Content\ej2\material-dark-lite.css" />
     <Content Include="Content\ej2\material-dark.css" />
+    <Content Include="Content\ej2\material-lite.css" />
     <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\ej2\material3-dark-lite.css" />
     <Content Include="Content\ej2\material3-dark.css" />
+    <Content Include="Content\ej2\material3-lite.css" />
     <Content Include="Content\ej2\material3.css" />
+    <Content Include="Content\ej2\tailwind-dark-lite.css" />
     <Content Include="Content\ej2\tailwind-dark.css" />
+    <Content Include="Content\ej2\tailwind-lite.css" />
     <Content Include="Content\ej2\tailwind.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -205,6 +238,13 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -296,9 +336,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.24.1.41\build\net45\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.24.1.41\build\net45\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.targets'))" />
   </Target>
-  <Import Project="..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.24.1.41\build\net45\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.targets" Condition="Exists('..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.24.1.41\build\net45\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
