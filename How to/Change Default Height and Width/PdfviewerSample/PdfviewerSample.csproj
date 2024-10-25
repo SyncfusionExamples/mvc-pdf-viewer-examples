@@ -52,15 +52,14 @@
     <Reference Include="Syncfusion.Compression.Base, Version=27.1450.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
-	<Reference Include="Syncfusion.EJ2, Version=23.2.6.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.EJ2.MVC5.23.2.6\lib\net45\Syncfusion.EJ2.dll</HintPath>
+    <Reference Include="Syncfusion.EJ2, Version=27.1.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.MVC5.27.1.56\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer, Version=27.1.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing, Version=27.1450.56.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.Licensing.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base, Version=27.1450.56.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.1.56\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
@@ -197,13 +196,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ej2\ej2-pdfviewer-lib\pdfium.js" />
+    <Content Include="Scripts\ej2\ej2.min.js" />
     <Content Include="Scripts\ej2\ej2-pdfviewer-lib\pdfium.wasm" />
     <Content Include="Content\ej2\compatibility\material.scss" />
     <Content Include="Content\ej2\compatibility\highcontrast.scss" />
     <Content Include="Content\ej2\compatibility\fabric.scss" />
     <Content Include="Content\ej2\compatibility\bootstrap4.scss" />
     <Content Include="Content\ej2\compatibility\bootstrap.scss" />
-    <Content Include="Scripts\ej2\ej2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -255,10 +254,10 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ej2\ej2.d.ts" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <TypeScriptCompile Include="Scripts\ej2\ej2.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

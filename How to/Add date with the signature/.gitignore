@@ -54,6 +54,7 @@ x64/
 *.lastcodeanalysissucceeded
 *.FxCopAnalysis.xml
 *.StyleCopAnalysis.xml
+*css
 
 # Visual Studio profiler
 *.psess
