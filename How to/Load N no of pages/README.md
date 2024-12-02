@@ -10,7 +10,7 @@ ASP.NET MVC Applications can be developed using one of the following IDEs. You c
 * Visual Studio Code
 
 ### Frameworks
-The below tools required to run the Syncfusion ASP.NET MVC UI application.
+The below tools required to run the Syncfusion&reg; ASP.NET MVC UI application.
 
 * Net Framework 4.5 or above.
 * ASP.NET MVC 4 or ASP.NET MVC 5
