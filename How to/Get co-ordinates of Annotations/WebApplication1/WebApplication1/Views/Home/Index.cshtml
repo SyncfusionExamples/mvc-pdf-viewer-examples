@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <div style="height:500px;width:100%;">
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").AnnotationAdd("onAnnotationAdd").Render()
+    </div>
+</div>
+
+<script type="text/javascript">
+    // Function to handle the annotationAdd event
+    function onAnnotationAdd(args) {
+        // Log the event arguments to the console
+        console.log(args);
+    }
+</script>
