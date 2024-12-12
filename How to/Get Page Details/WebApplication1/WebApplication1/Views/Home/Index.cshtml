@@ -1,0 +1,47 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <div style="height:500px;width:100%;">
+        <!-- Button to trigger Page Info retrieval -->
+        <button id="getPageInfo">GetPageInfo</button>
+        <!-- Render PDF Viewer -->
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").Render()
+    </div>
+</div>
+
+<!-- Ensure necessary Syncfusion scripts and styles are included -->
+<script src="https://cdn.syncfusion.com/ej2/27.2.4/dist/ej2.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+
+        // Add event listener for retrieving page information
+        document.getElementById('getPageInfo').addEventListener('click', function () {
+            retrievePageInfo();
+        });
+
+        function retrievePageInfo() {
+            if (viewer) {
+                // Set the page index for which info is required
+                const pageIndex = 0;
+
+                // To Retrieve and log the page information
+                console.log(viewer.getPageInfo(pageIndex));
+
+                // To Log the specific page information details to the console
+
+                var pageInfo = viewer.getPageInfo(pageIndex);
+
+                if (pageInfo) {
+                    console.log(`Page Info for Page Index ${pageIndex}:`);
+                    console.log(`Height: ${pageInfo.height}`);
+                    console.log(`Width: ${pageInfo.width}`);
+                    console.log(`Rotation: ${pageInfo.rotation}`);
+                }
+            }
+        }
+    };
+</script>
