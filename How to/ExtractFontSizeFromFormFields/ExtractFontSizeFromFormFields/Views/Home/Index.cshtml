@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    
+}
+
+@{
+    int fontSize = 0;
+}
+
+
+<div>
+    <div style="height:500px;width:100%;">
+        <button id="getFormFieldSize" onclick="GetFormFieldSize()">Get FormField size</button>
+        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/")).DocumentPath("https://cdn.syncfusion.com/content/pdf/form-filling-document.pdf").AjaxRequestInitiate("ajaxRequestInitiated").FormFieldAdd("formFieldAdded").FormFieldMove("formFieldMoved").Render()
+    </div>
+</div>
+
+<script>
+    function ajaxRequestInitiated(args) {
+        if (args.JsonData["action"] == "Download") {
+            args.JsonData["formFieldsize"] = @fontSize;
+        }
+    }
+    function GetFormFieldSize() {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var formField = viewer.retrieveFormFields();
+        for (var i = 0; i < formField.length; i++) {
+            if (formField[i].name == "name") { 
+                fontSize = Math.floor(formField[i].fontSize);
+                console.log(fontSize);
+            }
+            viewer.formDesignerModule.updateFormField(formField[i], {
+                customData: { FontSize: fontSize },
+            });
+        }
+        viewer.serverActionSettings.download = 'GetCustomData';
+        viewer.download();
+        viewer.serverActionSettings.download = 'Download';
+    }
+    function formFieldAdded() {
+        console.log("Form field added");
+    }
+    function formFieldMoved() {
+        console.log("Form field Moved");
+    }
+</script>
