@@ -1,0 +1,17 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.PdfViewer
+@using System.IO
+@using Syncfusion.EJ2.Navigations
+
+@{
+    ViewBag.Title = "Home Page";
+    var originUrl = $"{Request.Url.Scheme}://{Request.Url.Authority}";
+    var document = originUrl + "/Content/pdfsuccinctly.pdf";
+    var resourceUrl = originUrl + "/Content/ej2-pdfviewer-lib";
+}
+
+<div style="height: 900px;width:100%;">
+    @Html.EJS().PdfViewer("pdfviewer").ResourceUrl(@resourceUrl).DocumentPath(@document).Render()
+
+</div>
+
