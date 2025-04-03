@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using Syncfusion.EJ2.PdfViewer
+@using ToolbarCustomization.Controllers
+@{
+    var toolItem1 = new { id = "submit_form", text = "Submit Form", tooltipText = "Custom toolbar item", align = "Center", cssClass = "custom_button" };
+    CustomToolbarItems customToolbarItems = new CustomToolbarItems();
+    customToolbarItems.ToolbarItems = new List<object> { toolItem1, "OpenOption", "PageNavigationTool", "MagnificationTool", "PanTool", "SelectionTool", "SearchOption", "PrintOption", "DownloadOption", "UndoRedoTool", "AnnotationEditTool", "FormDesignerEditTool", "CommentTool" };
+    PdfViewerToolbarSettings toolbarSettings = new PdfViewerToolbarSettings()
+    {
+        ShowTooltip = true,
+        ToolbarItems = customToolbarItems.ToolbarItems
+    };
+}
+<div>
+    <div style="height:500px;width:1350px;">
+        <br /><br />
+        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/Home/")).DocumentPath("https://cdn.syncfusion.com/content/pdf/form-designer.pdf").ToolbarClick("toolbarClick").Created("onLoadedPage").DocumentLoad("documentLoaded").FormFieldAdd("formFieldAdd").ToolbarSettings(toolbarSettings).Render()
+    </div>
+</div>
+
+<script type="text/javascript">
+    function onLoadedPage(args) {
+        console.log(args);
+    }
+    function documentLoaded(args) {
+        console.log(args);
+    }
+    function formFieldAdd(args) {
+        console.log(args);
+    }
+    function toolbarClick(args) {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (args.item && args.item.id === 'submit_form') {
+            alert('Custom button clicked!');
+        }
+    }
+</script>
+
+<style>
+    .custom_button {
+        height: 100% !important;
+    }
+</style>
