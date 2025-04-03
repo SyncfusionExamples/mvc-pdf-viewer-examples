@@ -1,0 +1,31 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <!-- Render PDF Viewer -->
+    <button id="findTextBtn" onclick="findText()">Find Text</button>
+    <button id="findTextsBtn" onclick="findTexts()">Find Multiple Texts</button>
+    @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").Render()
+</div>
+
+<!-- Ensure necessary Syncfusion scripts and styles are included -->
+<script src="https://cdn.syncfusion.com/ej2/29.1.33/dist/ej2.min.js"></script>
+<script type="text/javascript">
+
+    function findText() {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        // Search for a single text ('pdf') across all pages (case insensitive)
+        viewer.textSearchModule.findTextAsync('pdf', false).then(function (res) {
+            console.log(res);  // Log the search results
+        });
+    }
+    function findTexts() {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        // Search for multiple texts (['pdf', 'the']) across all pages (case insensitive)
+        viewer.textSearchModule.findTextAsync(['pdf', 'the'], false).then(function (res) {
+            console.log(res);  // Log the search results
+        });
+    }
+</script>
