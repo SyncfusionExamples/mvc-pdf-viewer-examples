@@ -1,0 +1,25 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.PdfViewer
+@using System.IO
+@using Syncfusion.EJ2.Navigations
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div style="height: 900px;width:100%;">
+    <br /> <br /> <br /> <br /> <br /> <br />
+    @Html.EJS().PdfViewer("pdfviewer").ResourceUrl("https://localhost:44386/content").customFonts(["simsun.ttc", "sumsinb.ttf", "arial/arialbd.ttf", "arial/arial.ttf", "BKANT.TTF", "calibri.ttf", "GARA.TTF", "GARAIT.TTF", "msgothic.ttc", "trebuc.ttf", "wingding.ttf"]).DocumentPath("https://localhost:44386/content/pdf-succinctly.pdf").Render()
+</div>
+
+<script>
+    
+</script>
+<style>
+    
+</style>
+
+
+
+
