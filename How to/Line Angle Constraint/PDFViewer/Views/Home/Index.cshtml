@@ -1,0 +1,17 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <!-- Render PDF Viewer -->
+    @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").Render()
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        viewer.annotationDrawingOptions.enableLineAngleConstraints = true;
+        viewer.annotationDrawingOptions.restrictLineAngleTo = 90;
+    };
+</script>
