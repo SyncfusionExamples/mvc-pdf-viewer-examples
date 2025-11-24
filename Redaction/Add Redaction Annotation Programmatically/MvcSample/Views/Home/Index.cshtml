@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Add Redaction Annotation Programmatically";
+}
+
+<div class="text-center">
+    <div style="margin-bottom:12px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center;">
+        <button id="btnAddRedaction" type="button" onclick="addRedaction()">Add Redaction</button>
+        <button id="btnEditRedaction" type="button" onclick="editRedactAnnotation()">Edit Redaction</button>
+        <button id="btnDeleteById" type="button" onclick="deleteAnnotationById()">Delete By Id</button>
+        <button id="btnAddPageRedactions" type="button" onclick="addPageRedactions()">Add Page Redactions (1,3,5,7)</button>
+        <button id="btnApplyRedaction" type="button" onclick="applyRedaction()">Apply Redaction</button>
+    </div>
+
+    @Html.EJS().PdfViewer("pdfViewer").ResourceUrl("https://cdn.syncfusion.com/ej2/31.2.12/dist/ej2-pdfviewer-lib").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").Height("640px").Render()
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        window.viewer = document.getElementById('pdfViewer').ej2_instances[0];
+
+        // Primary toolbar (includes RedactionEditTool)
+        viewer.toolbarSettings = {
+            toolbarItems: [
+                'OpenOption', 'UndoRedoTool', 'PageNavigationTool', 'MagnificationTool', 'PanTool',
+                'SelectionTool', 'CommentTool', 'SubmitForm', 'AnnotationEditTool', 'RedactionEditTool',
+                'FormDesignerEditTool', 'SearchOption', 'PrintOption', 'DownloadOption'
+            ]
+        };
+
+        // Default redaction properties
+        viewer.redactionSettings = {
+            overlayText: 'Confidential',
+            markerFillColor: '#FF0000',
+            markerBorderColor: '#000000',
+            isRepeat: false,
+            fillColor: '#F8F8F8',
+            fontColor: '#333333',
+            fontSize: 14,
+            fontFamily: 'Symbol',
+            textAlign: 'Right'
+        };
+
+        // Optional: track added annotations
+        viewer.annotationAdd = function (args) {
+            if (args && args.annotation && args.annotation.subject === 'Redaction') {
+                console.log('Redaction added:', args.annotation.annotationId);
+            }
+        };
+    };
+
+    function addRedaction() {
+        if (!window.viewer) return;
+        viewer.annotation.addAnnotation('Redaction', {
+            bound: { x: 200, y: 480, width: 150, height: 75 },
+            pageNumber: 1,
+            markerFillColor: '#0000FF',
+            markerBorderColor: 'white',
+            fillColor: 'red',
+            overlayText: 'Confidential',
+            fontColor: 'yellow',
+            fontFamily: 'Times New Roman',
+            fontSize: 8,
+            beforeRedactionsApplied: false
+        });
+        console.log('Redaction annotation added');
+    }
+
+    function deleteAnnotationById() {
+        if (!window.viewer) return;
+        var first = viewer.annotationCollection && viewer.annotationCollection[0];
+        if (first) {
+            viewer.annotationModule.deleteAnnotationById(first.annotationId);
+            console.log('Deleted annotation:', first.annotationId);
+        } else {
+            console.log('No annotations to delete.');
+        }
+    }
+
+    function editRedactAnnotation() {
+        if (!window.viewer) return;
+        var collection = viewer.annotationCollection || [];
+        var edited = false;
+        for (var i = 0; i < collection.length; i++) {
+            if (collection[i].subject === 'Redaction') {
+                collection[i].overlayText = 'EditedAnnotation';
+                collection[i].markerFillColor = '#22FF00';
+                collection[i].markerBorderColor = '#000000';
+                collection[i].isRepeat = true;
+                collection[i].fillColor = '#F8F8F8';
+                collection[i].fontColor = '#333333';
+                collection[i].fontSize = 14;
+                collection[i].fontFamily = 'Symbol';
+                collection[i].textAlign = 'Right';
+                collection[i].beforeRedactionsApplied = false;
+                viewer.annotation.editAnnotation(collection[i]);
+                edited = true;
+            }
+        }
+        if (!edited) console.log('No redaction annotations found to edit.');
+    }
+
+    function addPageRedactions() {
+        if (!window.viewer) return;
+        // pages 1, 3, 5, 7
+        viewer.annotation.addPageRedactions([1, 3, 5, 7]);
+        console.log('Page redactions added for pages: 1,3,5,7');
+    }
+
+    function applyRedaction() {
+        if (!window.viewer) return;
+        // Note: Applying redaction is irreversible.
+        viewer.annotation.redact();
+        console.log('Applied redaction to document');
+    }
+</script>
