@@ -1,0 +1,20 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<button id="viewer" onclick="extractPage()">Extract Page</button>
+<div style="width:100%;height:600px">
+@Html.EJS().PdfViewer("pdfviewer").ResourceUrl("https://cdn.syncfusion.com/ej2/31.1.23/dist/ej2-pdfviewer-lib").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").PageOrganizerSettings(new {CanExtractPages = true}).Render()
+</div>
+<script>
+    function extractPage() {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        //Extract Pages 1,2
+        var array = viewer.extractPages('1,2');
+        //Load the Extracted Pages
+        viewer.load(array,'');
+        //Print the Base64 for reference
+        console.log(array);
+    }
+</script>
