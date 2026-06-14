@@ -1,0 +1,24 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <div style="height:500px;width:100%;">
+        <button onclick="enableTextSelection()">EnableTextSelection</button>
+        <button onclick="disableTextSelection()">DisableTextSelection</button>
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/30.1.37/dist/ej2-pdfviewer-lib").EnableTextSelection(false).Render();
+    </div>
+</div>
+<script type="text/javascript">
+function enableTextSelection()
+{
+   var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+   viewer.enableTextSelection=true;    
+}
+function disableTextSelection()
+{
+    var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+    viewer.enableTextSelection=false; 
+}
+</script>
