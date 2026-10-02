@@ -11,7 +11,7 @@
 
     <!-- MVC PDF Viewer Container -->
     <div style="height: calc(100vh - 51px); width: 100%;">
-        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/34.1.29/dist/ej2-pdfviewer-lib").ResourcesLoaded("handleResourcesLoaded").Render()
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/34.1.29/dist/ej2-pdfviewer-lib").ResourcesLoaded("handleResourcesLoaded").EnableCollaborativeEditing(true).DocumentChanged("handleDocumentChanged").Render()
     </div>
 
     <script type="text/javascript">
@@ -435,8 +435,6 @@
 
             if (viewer) {
                 updateStatusBar();
-                viewer.enableCollaborativeEditing = true;
-                viewer.documentChanged = handleDocumentChanged
             }
         });
 
