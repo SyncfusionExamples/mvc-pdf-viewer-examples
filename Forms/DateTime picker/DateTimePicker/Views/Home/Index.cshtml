@@ -1,0 +1,80 @@
+@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "DateTime Picker";
+}
+
+<div>
+    <div style="margin-bottom: 12px;">
+        <button type="button" onclick="addDateField()">Add Date Picker</button>
+        <button type="button" onclick="addTimeField()">Add Time Picker</button>
+    </div>
+
+    <div style="height: 680px; width: 100%;">
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/form-filling-document.pdf").Render()
+    </div>
+</div>
+
+<style>
+    #pdfviewer {
+        display: block;
+    }
+</style>
+
+<script type="text/javascript">
+    // Get the PDF Viewer instance
+    function getPdfViewerInstance() {
+        return document.getElementById('pdfviewer').ej2_instances[0];
+    }
+
+    // Add a Date field programmatically
+    function addDateField() {
+        var viewer = getPdfViewerInstance();
+        viewer.formDesignerModule.addFormField('Textbox', {
+            name: 'DateField1',
+            bounds: { X: 146, Y: 200, Width: 200, Height: 24 },
+            pageNumber: 1,
+            isDateField: true,
+            fontSize: 10,
+            color: 'black',
+            fontFamily: 'Helvetica',
+            backgroundColor: '#daeaf7ff',
+            borderColor: '#303030',
+            alignment: 'Left',
+            isReadOnly: false,
+            visibility: 'visible',
+            isRequired: false,
+            isPrint: true,
+            tooltip: '',
+            thickness: 1,
+            actions: {
+                format: { script: 'AFDate_FormatEx("m/d/yy")' }
+            }
+        });
+    }
+
+    // Add a Time field programmatically
+    function addTimeField() {
+        var viewer = getPdfViewerInstance();
+        viewer.formDesignerModule.addFormField('Textbox', {
+            name: 'TimeField1',
+            bounds: { X: 146, Y: 250, Width: 200, Height: 24 },
+            pageNumber: 1,
+            isDateField: true,
+            fontSize: 10,
+            color: 'black',
+            fontFamily: 'Helvetica',
+            backgroundColor: '#daeaf7ff',
+            borderColor: '#303030',
+            alignment: 'Left',
+            isReadOnly: false,
+            visibility: 'visible',
+            isRequired: false,
+            isPrint: true,
+            tooltip: '',
+            thickness: 1,
+            actions: {
+                format: { script: 'AFTime_FormatEx("HH:MM")' }
+            }
+        });
+    }
+</script>
