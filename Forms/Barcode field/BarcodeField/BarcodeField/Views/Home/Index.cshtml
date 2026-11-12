@@ -1,0 +1,232 @@
+﻿<div>
+    <div class="toolbar-actions">
+        <div class="action-group">
+            <h4>Add Barcode Field Programmatically</h4>
+            <button onclick="addBarcodeField('PDF417')">
+                Add PDF417
+            </button>
+            <button onclick="addBarcodeField('QRCode')">
+                Add QR Code
+            </button>
+            <button onclick="addBarcodeField('DataMatrix')">
+                Add Data Matrix
+            </button>
+            <button onclick="enableBarcodeMode()">
+                Set Barcode Field Mode
+            </button>
+        </div>
+        <div class="action-group">
+            <h4>Edit Barcode Field</h4>
+            <label>
+                Field
+            </label>
+            <select id="barcodeFields">
+                <option value="">No Barcode Field</option>
+            </select>
+            <button onclick="updateSymbology('PDF417')">
+                Set PDF417
+            </button>
+            <button onclick="updateSymbology('QRCode')">
+                Set QR Code
+            </button>
+            <button onclick="updateSymbology('DataMatrix')">
+                Set Data Matrix
+            </button>
+            <button onclick="deleteSelectedField()">
+                Delete Field
+            </button>
+        </div>
+    </div>
+    <div style="height:500px;width:100%;">
+        <!-- DocumentPath specifies the PDF document to load -->
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").DocumentLoad("refreshBarcodeFields").FormFieldAdd("refreshBarcodeFields").FormFieldRemove("refreshBarcodeFields").Render()
+    </div>
+</div>
+<style>
+    .barcode-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+        .barcode-toolbar h4 {
+            width: 100%;
+            margin: 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: #424242;
+        }
+
+        .barcode-toolbar button {
+            padding: 6px 12px;
+            font-size: 13px;
+            color: #1b1b1b;
+            background-color: #ffffff;
+            border: 1px solid #b1b1b1;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .barcode-toolbar button:hover:not(:disabled) {
+                background-color: #e8f1fb;
+                border-color: #0b6cbd;
+            }
+
+            .barcode-toolbar button:disabled {
+                opacity: 0.5;
+                cursor: default;
+            }
+
+        .barcode-toolbar select {
+            padding: 4px 6px;
+            font-size: 13px;
+            border: 1px solid #b1b1b1;
+            border-radius: 4px;
+        }
+
+    .e-pv-barcode-caption {
+        width: 100%;
+        margin-top: 2px;
+        font-family: monospace;
+        font-size: 11px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<script type="text/javascript">
+    function refreshBarcodeFields() {
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var dropdown = document.getElementById('barcodeFields');
+
+        dropdown.innerHTML = '';
+
+        var fields = Array.isArray(pdfviewer.formFieldCollections)
+            ? pdfviewer.formFieldCollections
+            : [];
+
+        var barcodeFields = [];
+
+        for (var i = 0; i < fields.length; i++) {
+
+            if (fields[i].type === 'Barcode') {
+                barcodeFields.push(fields[i]);
+            }
+        }
+
+        if (barcodeFields.length === 0) {
+
+            var emptyOption = document.createElement('option');
+            emptyOption.text = 'No Barcode Field';
+            emptyOption.value = '';
+
+            dropdown.appendChild(emptyOption);
+            return;
+        }
+
+        for (var j = 0; j < barcodeFields.length; j++) {
+
+            var option = document.createElement('option');
+
+            option.value = barcodeFields[j].id;
+            option.text =
+                barcodeFields[j].name +
+                ' (' +
+                barcodeFields[j].symbology +
+                ')';
+
+            dropdown.appendChild(option);
+        }
+    }
+
+    function addBarcodeField(symbology) {
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var fields = Array.isArray(pdfviewer.formFieldCollections)
+            ? pdfviewer.formFieldCollections
+            : [];
+
+        var count = 0;
+
+        for (var i = 0; i < fields.length; i++) {
+            if (fields[i].type === 'Barcode') {
+                count++;
+            }
+        }
+
+        pdfviewer.formDesignerModule.addFormField('Barcode', {
+            name: 'Barcode' + (count + 1),
+            bounds: {
+                X: 100,
+                Y: 150,
+                Width: 200,
+                Height: 80
+            },
+            pageNumber: 1,
+            symbology: symbology
+        });
+
+        refreshBarcodeFields();
+    }
+
+    function enableBarcodeMode() {
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        pdfviewer.formDesignerModule.setFormFieldMode('Barcode');
+    }
+
+    function getSelectedField() {
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var selectedId =
+            document.getElementById('barcodeFields').value;
+
+        if (!selectedId) {
+            return null;
+        }
+
+        var fields = Array.isArray(pdfviewer.formFieldCollections)
+            ? pdfviewer.formFieldCollections
+            : [];
+
+        for (var i = 0; i < fields.length; i++) {
+
+            if (fields[i].id === selectedId) {
+                return fields[i];
+            }
+        }
+
+        return selectedId;
+    }
+
+    function updateSymbology(symbology) {
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var field = getSelectedField();
+
+        if (!field) {
+            alert('Select a barcode field');
+            return;
+        }
+
+        pdfviewer.formDesignerModule.updateFormField(field, {
+            symbology: symbology
+        });
+
+        refreshBarcodeFields();
+    }
+
+    function deleteSelectedField() {
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var field = getSelectedField();
+
+        if (!field) {
+            alert('Select a barcode field');
+            return;
+        }
+
+        pdfviewer.formDesignerModule.deleteFormField(field);
+
+        refreshBarcodeFields();
+    }
+
+</script>
