@@ -1,0 +1,217 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var originUrl = $"{Request.Url.Scheme}://{Request.Url.Authority}";
+    var document = originUrl + "/Content/form_document.pdf";
+}
+
+
+<div>
+    <div class="toolbar-actions">
+        <div class="action-group">
+            <h4>Add Button Field Programmatically</h4>
+
+            <button onclick="addButtonField()">
+                Add Button Field
+            </button>
+
+            <button onclick="enableButtonMode()">
+                Enable Button Designer Mode
+            </button>
+        </div>
+
+        <div class="action-group">
+            <h4>Edit Button Field</h4>
+
+            <label>
+                Field
+            </label>
+
+            <select id="buttonFields">
+                <option value="">No Button Field</option>
+            </select>
+
+            <button onclick="editButtonField()">
+                Edit Button Field
+            </button>
+
+            <button onclick="deleteSelectedField()">
+                Delete Field
+            </button>
+        </div>
+    </div>
+
+    <div style="height:500px;width:100%;">
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath(@document).DocumentLoad("refreshButtonFields").FormFieldAdd("refreshButtonFields").FormFieldRemove("refreshButtonFields").Render()
+    </div>
+</div>
+<script type="text/javascript">
+
+    function refreshButtonFields() {
+
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var dropdown = document.getElementById('buttonFields');
+
+        dropdown.innerHTML = '';
+
+        var fields = Array.isArray(pdfviewer.formFieldCollections)
+            ? pdfviewer.formFieldCollections
+            : [];
+
+        var buttonFields = [];
+
+        for (var i = 0; i < fields.length; i++) {
+
+            if (fields[i].type === 'ButtonField') {
+                buttonFields.push(fields[i]);
+            }
+        }
+
+        if (buttonFields.length === 0) {
+
+            var emptyOption = document.createElement('option');
+
+            emptyOption.text = 'No Button Field';
+            emptyOption.value = '';
+
+            dropdown.appendChild(emptyOption);
+            return;
+        }
+
+        for (var j = 0; j < buttonFields.length; j++) {
+
+            var option = document.createElement('option');
+
+            option.value = buttonFields[j].id;
+            option.text =
+                buttonFields[j].name ||
+                buttonFields[j].value ||
+                buttonFields[j].id;
+
+            dropdown.appendChild(option);
+        }
+    }
+
+    function addButtonField() {
+
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+
+        var fields = Array.isArray(pdfviewer.formFieldCollections)
+            ? pdfviewer.formFieldCollections
+            : [];
+
+        var count = 0;
+
+        for (var i = 0; i < fields.length; i++) {
+
+            if (fields[i].type === 'ButtonField') {
+                count++;
+            }
+        }
+
+        pdfviewer.formDesignerModule.addFormField('ButtonField', {
+            name: 'Submit' + (count + 1),
+            pageNumber: 1,
+            bounds: {
+                X: 100,
+                Y: 350,
+                Width: 120,
+                Height: 32
+            },
+            value: 'Submit',
+            text: 'Submit',
+            tooltip: 'Click to submit',
+            actions: {
+                mouseUp: {
+                    action: 'GoTo',
+                    destinationPageNumber: 5,
+                    destinationLocation: {
+                        x: 100,
+                        y: 100
+                    },
+                    zoomValue: 2
+                }
+            }
+        });
+
+        refreshButtonFields();
+    }
+
+    function enableButtonMode() {
+
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+
+        pdfviewer.formDesignerModule.setFormFieldMode('ButtonField');
+    }
+
+    function getSelectedField() {
+
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+
+        var selectedId =
+            document.getElementById('buttonFields').value;
+
+        if (!selectedId) {
+            return null;
+        }
+
+        var fields = Array.isArray(pdfviewer.formFieldCollections)
+            ? pdfviewer.formFieldCollections
+            : [];
+
+        for (var i = 0; i < fields.length; i++) {
+
+            if (fields[i].id === selectedId) {
+                return fields[i];
+            }
+        }
+
+        return selectedId;
+    }
+
+    function editButtonField() {
+
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var field = getSelectedField();
+
+        if (!field) {
+            alert('Select a button field');
+            return;
+        }
+
+        pdfviewer.formDesignerModule.updateFormField(field, {
+            value: 'Submit Button',
+            text: 'Submit Button',
+            alignment: 'Left',
+            tooltip: 'Updated Submit Button',
+            actions: {
+                mouseUp: {
+                    action: 'GoTo',
+                    destinationPageNumber: 7,
+                    destinationLocation: {
+                        x: 100,
+                        y: 100
+                    },
+                    zoomValue: 1
+                }
+            }
+        });
+
+        refreshButtonFields();
+    }
+
+    function deleteSelectedField() {
+
+        var pdfviewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var field = getSelectedField();
+
+        if (!field) {
+            alert('Select a button field');
+            return;
+        }
+
+        pdfviewer.formDesignerModule.deleteFormField(field);
+
+        refreshButtonFields();
+    }
+
+</script>
